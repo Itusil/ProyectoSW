@@ -9,7 +9,7 @@
   <?php include '../php/Menus.php' ?>
     <section class="main" id="s1">
 	    <div>
-		<form id='fquestion' name='fquestion' action=’AddQuestion.php’>
+		<form id='fquestion' name='fquestion' action="AddQuestion.php" method="POST">
 			<label for="email">Email:*</label>
 			<input type="text" id="email" name="email" size="30"><br>
 			<label for="enunc">Enunciado de la pregunta:*</label>

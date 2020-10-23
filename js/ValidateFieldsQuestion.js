@@ -10,7 +10,7 @@
 	var tema = $("#tema").val();
 	var emailestudi= /^[a-z]+[0-9]{3}@(ikasle.ehu.)(eus|es)/;
 	var emailprofe=/[a-z]+(.[a-z]+)?@(ehu.)(eus|es)/;
-	var formatopregunta=/[a-zA-Z0-9.!#$%&'*+=?^_`{|}~-]{10,}/;
+	//var formatopregunta=/[a-zA-Z0-9.!#$%&'*+=?^_`{|}~- ]{10,}/;
 	if(email == "" || enunc=="" || resco =="" || resin1 =="" || resin2 =="" || resin3=="" || tema ==""){
 		alert("Hay que rellenar todos los campos");
 		e.preventDefault();
@@ -21,11 +21,17 @@
 		e.preventDefault();
 		return false;
 	}
-	if(!enunc.match(formatopregunta)){
+	var longitud = enunc.length;
+	if(longitud<10){
 		alert("El enunciado tiene que tener un minimo de 10 caracteres");
 		e.preventDefault();
 		return false;
 	}
+	// if(!enunc.match(formatopregunta)){
+		// alert("El enunciado tiene que tener un minimo de 10 caracteres");
+		// e.preventDefault();
+		// return false;
+	// }
 	return true;
 	});
 })

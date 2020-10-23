@@ -19,7 +19,7 @@
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div>
-		<form id='fquestion' name='fquestion' action=’AddQuestion.php’>
+		<form id='fquestion' name='fquestion' action="AddQuestionWithImage.php" method="POST" enctype="multipart/form-data">
 			<label for="email">Email:*</label>
 			<input type="text" id="email" name="email" size="30"><br>
 			<label for="enunc">Enunciado de la pregunta:*</label>
@@ -39,7 +39,7 @@
 				<option value="3">Alta</option>
 			 </select><br>
 			<label for="fotoASubir">Insertar imagen:</label>
-			<input type="file" name="fotoASubir" id="fotoASubir"><br>
+			<input type="file" accept="image/*" name="fotoASubir" id="fotoASubir"><br>
 			<label for="tema">Tema:*</label>
 			<input type="text" id="tema" name="tema" size="20"><br>
 			<input type="submit" id="boton" value="Enviar solicitud">
