@@ -8,8 +8,8 @@
   <section class="main" id="s1">
     <div>
 
-      <h2>Quiz: el juego de las preguntas</h2>
-      
+      <h2>Quiz: el juego de las preguntas</h2><br>
+      <img src="../images/quiz.jpg" height="150">
     </div>
   </section>
   <?php include '../html/Footer.html' ?>

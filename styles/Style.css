@@ -5,7 +5,9 @@ body						{font: 16px Georgia, serif;}
 #page-wrap				{margin: 2% auto; color: white;}
 #page-wrap >.main 		{border: 1px solid #999; padding: 1%;
 						 margin-bottom: 1px; color: black;}
-
+fieldset,table {width: 100%;  border-collapse: collapse;  border: 3px solid #0AB5F7;  background-color: #FAB245;  margin-left: auto;  margin-right: auto;}
+legend {  color: blue;  font-weight: bold;  background-color: #eee;}
+th {color:blue;}
 section > div				{padding: 5px;}
 header, nav, section		{background: #eee; text-align: center;}
 footer					{background: #eee; text-align: center;}

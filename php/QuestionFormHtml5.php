@@ -3,8 +3,8 @@
 <head>
   <?php include '../html/Head.html'?>
 	<meta charset="utf-8">
-  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-</head>
+  <!--<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> -->
+  <script src="../js/jquery-3.4.1.min.js"></script></head>
 <body>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">

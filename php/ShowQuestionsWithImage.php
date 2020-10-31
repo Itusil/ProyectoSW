@@ -17,7 +17,7 @@
 
 		echo "<table border=1>"; 
 		echo "<tr>";
-		echo "<th>Nยบ</th>";
+		echo "<th>Num</th>";
 		echo "<th>Email</th>";
 		echo "<th>Enunciado</th>";
 		echo "<th>Resp. correcta</th>";
