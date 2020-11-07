@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ShowXmlQuestions.xsl" ?>
+<assessmentItems>
+  <assessmentItem subject="Web" author="jvadillo001@ikasle.ehu.eus">
+    <itemBody>
+      <p>Tag HTML para añadir un formulario</p>
+    </itemBody>
+    <correctResponse>
+      <response>
+				FORM
+			</response>
+    </correctResponse>
+    <incorrectResponses>
+      <response> OBJECT </response>
+      <response> TABLE </response>
+      <response> DIV </response>
+    </incorrectResponses>
+  </assessmentItem>
+  <assessmentItem subject="Internet" author="rarruabarrena001@ikasle.ehu.eus">
+    <itemBody>
+      <p>Este protocolo acabará funcionando
+			incluso entre dos latas unidas por un cordón</p>
+    </itemBody>
+    <correctResponse>
+      <response>
+				TCP/IP
+			</response>
+    </correctResponse>
+    <incorrectResponses>
+      <response> HTTP </response>
+      <response> SMTP </response>
+      <response> Ninguna es correcta </response>
+    </incorrectResponses>
+  </assessmentItem>
+  <assessmentItem subject="Sostenibilidad" author="miturria003@ikasle.ehu.eus">
+    <itemBody>
+      <p>¿A qué nos referimos con desarrollo sostenible? </p>
+    </itemBody>
+    <correctResponse>
+      <response>Al desarrollo que satisface las necesidades del presente sin comprometer las necesidades del futuro.</response>
+    </correctResponse>
+    <incorrectResponses>
+      <response>A que la sociedad crezca lo máximo posible.</response>
+      <response>Únicamente a los 17 objetivos impulsados por las Naciones Unidas.</response>
+      <response>Al desarrollo que satisface las necesidades del presente sin comprometer las necesidades del futuro.</response>
+    </incorrectResponses>
+  </assessmentItem>
+</assessmentItems>

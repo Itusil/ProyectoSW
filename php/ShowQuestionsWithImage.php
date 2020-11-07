@@ -55,11 +55,6 @@
 ?>
 
 
-
-
-
-
-
     </div>
   </section>
   <?php include '../html/Footer.html' ?>
