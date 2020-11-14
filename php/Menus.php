@@ -19,7 +19,7 @@
 		  <!--<span><a href='QuestionFormWithImage.php<//?php echo"?email=$email&img=$foto";?>'> Insertar Pregunta</a></span>
 		  <span><a href='ShowQuestionsWithImage.php<//?php echo"?email=$email&img=$foto";?>'> Ver Preguntas</a></span> 
 		  <span><a href='ShowXmlQuestions.php<//?php echo"?email=$email&img=$foto";?>'> Ver Preguntas XML</a></span>-->
-		  <span><a href='HandlingQuizesAjax.php<?php echo"?email=$email&img=$foto";?>'>Gestionar</a></span>
+		  <span><a href='HandlingQuizesAjax.php<?php echo"?email=$email&img=$foto";?>'>Gestionar preguntas</a></span>
 		  <span><a href='Credits.php<?php echo"?email=$email&img=$foto";?>'>Creditos</a></span>
 		</nav>
   <?php }else{?>

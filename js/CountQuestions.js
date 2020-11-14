@@ -14,10 +14,7 @@ $(document).ready(function(){
 				preguntasTotal++;
 			}
 			$('#cuantasCelda').text(preguntasUsuario+"/"+preguntasTotal);
- });
-}
-);
-},2000);
+ });});},2000);
 
 setInterval(function (){
 $(document).ready(function(){

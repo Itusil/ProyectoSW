@@ -36,20 +36,14 @@
 		<?php 
 		function estaLogeado($email_){
 			$usuarios = simplexml_load_file('../xml/UserCounter.xml');
-			$esta =0;
 			foreach ($usuarios->xpath('//usuario') as $usuario)
 			{
 				$email = $usuario['email'];
 				if($email == $email_){
-					$esta=1;
-				}
-			}
-			if($esta==0){
-				return false;
-			}else{
-				return true;
-			}
-		}			
+					return true;
+				}}
+			return false;
+			}			
 		
 		
 		//hacer el isset con tipop
