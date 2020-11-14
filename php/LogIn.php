@@ -34,6 +34,24 @@
 	</fieldset>
 	<?php include '../php/DbConfig.php' ?>
 		<?php 
+		function estaLogeado($email_){
+			$usuarios = simplexml_load_file('../xml/UserCounter.xml');
+			$esta =0;
+			foreach ($usuarios->xpath('//usuario') as $usuario)
+			{
+				$email = $usuario['email'];
+				if($email == $email_){
+					$esta=1;
+				}
+			}
+			if($esta==0){
+				return false;
+			}else{
+				return true;
+			}
+		}			
+		
+		
 		//hacer el isset con tipop
 		if (isset($_POST['email'])){
 				$bol=0;
@@ -42,10 +60,13 @@
 				$usuario = mysqli_query($link ,$sql);
 				if(mysqli_num_rows($usuario) == 0){
 					echo '<p style="color:red; font-size:20px; font-weight: bold;">LOGIN INCORRECTO</p>';
+				}else if(estaLogeado($_POST["email"])){
+					echo '<p style="color:red; font-size:20px; font-weight: bold;">Este usuario ya esta logeado en otra pestaña</p>';
 				}else{
 					$row  = mysqli_fetch_array($usuario);
 					$email = $row["email"];
 					$foto = $row["imagen"];
+					include("./IncreaseGlobalCounter.php");
 					echo "<script> window.alert('bienvenido usuario $email'); window.location.href = 'Layout.php?email=$email&img=$foto';</script> ";
 				}	
 				mysqli_close($link); 
