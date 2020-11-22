@@ -13,6 +13,16 @@
 		<?php }else{ ?>
 			<img src="<?php $foto = $_GET["img"]; echo "$foto"; ?>" height="50px" >
 		<?php } ?>
+		
+		<?php include '../php/DbConfig.php' ?>
+		<?php 
+		//Obtener el tipo de estudiante llamando a la BD:
+		$link = new mysqli($server, $user, $pass, $basededatos);
+		$sql="SELECT tipo FROM usuario where usuario.email = '".$_GET['email']."'";
+		$respuesta = mysqli_query($link ,$sql);
+		$row  = mysqli_fetch_array($respuesta);
+		$tipo = $row["tipo"];	
+		?>
 		</header>
 		<nav class='main' id='n1' role='navigation'>
 		  <span><a href='Layout.php<?php echo"?email=$email&img=$foto";?>'>Inicio</a></span>
@@ -21,6 +31,10 @@
 		  <span><a href='ShowXmlQuestions.php<//?php echo"?email=$email&img=$foto";?>'> Ver Preguntas XML</a></span>-->
 		  <span><a href='HandlingQuizesAjax.php<?php echo"?email=$email&img=$foto";?>'>Gestionar preguntas</a></span>
 		  <span><a href='Credits.php<?php echo"?email=$email&img=$foto";?>'>Creditos</a></span>
+		  <?php 		
+		  if ($tipo == "profe"){
+			echo "<span><a href='ClientGetQuestion.php?email=$email&img=$foto'>Obtener datos pregunta</a></span>";
+		}?>
 		</nav>
   <?php }else{?>
   	<header class='main' id='h1'>

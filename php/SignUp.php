@@ -7,6 +7,7 @@
   <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
   <script src="../js/jquery-3.4.1.min.js"></script>
   <script src="../js/ShowImageInForm.js"></script>
+  <script src="../js/comprobarCorreo.js"></script>
 </head>
 <style>
 #img_url {
@@ -31,10 +32,12 @@
 			<label for="estu">Estudiante</label><br><br>
 			<label for="email">Email:*</label>
 			<input type="text" id="email" name="email" size="30"><br><br>
+			<text id="resVIP"></text>
 			<label for="nom">Nombre y apellidos:* (respeta las mayusculas)</label>
 			<input type="text" id="nom" name="nom" size="40"><br><br>
 			<label for="pass">Contraseña:*</label>
 			<input type="password" id="pass" name="pass" size="20"><br><br>
+			<text id="resCON"></text>
 			<label for="pass2">Repetir contraseña:*</label>
 			<input type="password" id="pass2" name="pass2" size="20"><br><br>
 			<label for="fotoASubir">Insertar imagen:</label>

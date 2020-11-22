@@ -75,5 +75,3 @@
   <?php include '../html/Footer.html' ?>
 	<!--<script src="../js/ValidateFieldsQuestion.js"></script>-->
 </body>
-</html>
-
