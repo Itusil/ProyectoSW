@@ -1,5 +1,32 @@
-		<?php include '../php/DbConfig.php' ?>
-		<?php
+<?php session_start();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <?php include '../html/Head.html'?>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+<style>
+</style>
+<body>
+<?php include '../php/DbConfig.php' ?>
+  <?php if(!isset($_SESSION['tipo']) || ($_SESSION['tipo']!="profe" && $_SESSION['tipo']!="estu")){
+echo "<script> 
+	Swal.fire({
+		  icon: 'error',
+		  title: 'Vaya, parece que no deberías estar aqui...',
+		  allowOutsideClick: false,
+		  showDenyButton: false,
+		  showCancelButton: false,
+		  confirmButtonText: `De acuerdo`,
+		  denyButtonText: `No`,
+		}).then((result) => {
+  if (result.isConfirmed) {
+	window.location.href = 'Layout.php';  }
+})
+	</script>"; 
+	}else{
 		//Identar inserción
 		function formatXml($simpleXMLElement)
 		{
@@ -35,16 +62,16 @@
 					//Inserción en xml
 					$xml = simplexml_load_file('../xml/Questions.xml');
 					$pregunta = $xml->addChild('assessmentItem');
-					$pregunta->addAttribute('subject', $_POST['tema']);
-					$pregunta->addAttribute('author', $_POST['email']);
+					$pregunta->addAttribute('subject', strip_tags($_POST['tema']));
+					$pregunta->addAttribute('author', strip_tags($_POST['email']));
 					$itembody = $pregunta->addChild('itemBody'); 
 					$itembody->addChild('p',$_POST['enunc']);
 					$correctResponse = $pregunta->addChild('correctResponse');
-					$response = $correctResponse->addChild('response',$_POST['resco']);
+					$response = $correctResponse->addChild('response',strip_tags($_POST['resco']));
 					$incorrectResponses = $pregunta->addChild('incorrectResponses'); 
-					$incorrectResponses->addChild('response', $_POST['resin1']);
-					$incorrectResponses->addChild('response', $_POST['resin2']);
-					$incorrectResponses->addChild('response', $_POST['resin3']);
+					$incorrectResponses->addChild('response', strip_tags($_POST['resin1']));
+					$incorrectResponses->addChild('response', strip_tags($_POST['resin2']));
+					$incorrectResponses->addChild('response', strip_tags($_POST['resin3']));
 					//Insercion identada:
 					$xmlContent = formatXml($xml);
 					$nuevoxml = new SimpleXMLElement($xmlContent);
@@ -53,7 +80,7 @@
 					
 					//insercion en DB
 					$link = new mysqli($server, $user, $pass, $basededatos);
-					$sql = "INSERT INTO preguntasconimagen(email,enunc,resco,resin1,resin2,resin3,difi,tema,img) values('" . $_POST["email"] . "','" . $_POST["enunc"] . "' ,'" . $_POST["resco"] ."' ,'" . $_POST["resin1"] ."', '" . $_POST["resin2"] ."' , '" . $_POST["resin3"] ."' , '" . $_POST["difi"] ."' , '" . $_POST["tema"] ."', '".$file_to_saved."' )";
+					$sql = "INSERT INTO preguntasconimagen(email,enunc,resco,resin1,resin2,resin3,difi,tema,img) values('" . strip_tags($_POST["email"]) . "','" . strip_tags($_POST["enunc"]) . "' ,'" . strip_tags($_POST["resco"]) ."' ,'" . strip_tags($_POST["resin1"]) ."', '" . strip_tags($_POST["resin2"]) ."' , '" . strip_tags($_POST["resin3"])."' , '" .strip_tags($_POST["difi"]) ."' , '" . strip_tags($_POST["tema"]) ."', '".$file_to_saved."' )";
 					if (!mysqli_query($link ,$sql))
 						{
 							die('Error: ' . mysqli_error($link));
@@ -63,4 +90,5 @@
 					mysqli_close($link); 
 				}				
 			}
+	}
  ?>

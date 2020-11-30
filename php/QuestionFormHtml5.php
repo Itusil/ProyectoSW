@@ -3,9 +3,25 @@
 <head>
   <?php include '../html/Head.html'?>
 	<meta charset="utf-8">
-  <!--<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="../js/jquery-3.4.1.min.js"></script></head>
 <body>
+<?php 
+if(true){
+echo "<script> 
+	Swal.fire({
+		  icon: 'error',
+		  title: 'Vaya, parece que no deberías estar aqui...',
+		  allowOutsideClick: false,
+		  showDenyButton: false,
+		  showCancelButton: false,
+		  confirmButtonText: `De acuerdo`,
+		  denyButtonText: `No`,
+		}).then((result) => {
+  if (result.isConfirmed) {
+	window.location.href = 'Layout.php';  }
+})
+	</script>";}else{?>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div>
@@ -37,5 +53,7 @@
   </section>
   <?php include '../html/Footer.html' ?>
 	<script src="../js/ValidateFieldsQuestion.js"></script>
+		<?php } ?>
+
 </body>
 </html>

@@ -73,7 +73,11 @@
 				echo '<p style="color:red; font-size:20px; font-weight: bold;">ERROR: Las contraseñas no coinciden</p>';
 			}else{
 				$link = new mysqli($server, $user, $pass, $basededatos);
-				$sql = "INSERT INTO usuario(tipo,email,nombre,pass,imagen) values('" . $_POST["tipo"] . "','" . $_POST["email"] . "' ,'" . $_POST["nom"] ."' ,'" . $_POST["pass"] ."', '".$file_to_saved."' )";
+				
+				//Contraseña criptografiada:
+				$nuevapass = crypt(strip_tags($_POST["pass"]),'$5$rounds=5000$ArenItur$');
+
+				$sql = "INSERT INTO usuario(tipo,email,nombre,pass,imagen) values('" .strip_tags($_POST["tipo"]) . "','" . strip_tags($_POST["email"]). "' ,'" . strip_tags($_POST["nom"]) ."' ,'" . $nuevapass ."', '".$file_to_saved."' )";
 				if (!mysqli_query($link ,$sql))
 					{
 						die('Error: ' . mysqli_error($link));

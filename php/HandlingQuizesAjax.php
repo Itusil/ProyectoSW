@@ -1,21 +1,39 @@
+<?php session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <?php include '../html/Head.html'?>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <!--<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>-->
-  <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
   <script src="../js/jquery-3.4.1.min.js"></script>
   <script src="../js/ShowImageInForm.js"></script>
   <script src="../js/ShowQuestionsAjax.js"></script>
   <script src="../js/AddQuestionsAjax.js"></script>
   <script src="../js/CountQuestions.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <style>
 </style>
 <body>
+  <?php if(!isset($_SESSION['tipo']) || ($_SESSION['tipo']!="profe" && $_SESSION['tipo']!="estu")){
+echo "<script> 
+	Swal.fire({
+		  icon: 'error',
+		  title: 'Vaya, parece que no deberías estar aqui...',
+		  allowOutsideClick: false,
+		  showDenyButton: false,
+		  showCancelButton: false,
+		  confirmButtonText: `De acuerdo`,
+		  denyButtonText: `No`,
+		}).then((result) => {
+  if (result.isConfirmed) {
+	window.location.href = 'Layout.php';  }
+})
+	</script>"; 
+	}else{
+?>
   <?php include '../php/Menus.php' ?>
-  <!--?php header("Cache-Control: no-store"); ?> NO FUNCIONA EN WEBHOST-->
+
   <section class="main" id="s1">
     <div id="activos">
 	    <legend>Usuarios Activos</legend>
@@ -35,7 +53,7 @@
 		<td><br>
 		<form id='fquestion' name='fquestion'  method="POST" enctype="multipart/form-data">
 			<label for="email">Email:*</label>
-			<input type="text" id="email" name="email" size="30" style="background-color : #D39E52" readonly value="<?php $email = $_GET["email"]; echo"$email";?>"><br><br>
+			<input type="text" id="email" name="email" size="30" style="background-color : #D39E52" readonly value="<?php $email = $_SESSION["email"]; echo"$email";?>"><br><br>
 			<label for="enunc">Enunciado de la pregunta:*</label>
 			<input type="text" id="enunc" name="enunc" size="100"><br><br>
 			<label for="resco">Respuesta correcta:*</label>
@@ -70,5 +88,6 @@
   <?php include '../html/Footer.html' ?>
 	<!--<script src="../js/ValidateFieldsQuestion.js"></script>-->
 </body>
+  <?php }?>
 </html>
 

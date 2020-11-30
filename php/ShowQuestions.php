@@ -2,8 +2,25 @@
 <html>
 <head>
   <?php include '../html/Head.html'?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
+<?php 
+if(true){
+echo "<script> 
+	Swal.fire({
+		  icon: 'error',
+		  title: 'Vaya, parece que no deber?as estar aqui...',
+		  allowOutsideClick: false,
+		  showDenyButton: false,
+		  showCancelButton: false,
+		  confirmButtonText: `De acuerdo`,
+		  denyButtonText: `No`,
+		}).then((result) => {
+  if (result.isConfirmed) {
+	window.location.href = 'Layout.php';  }
+})
+	</script>";}else{?>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div>
@@ -49,5 +66,7 @@
     </div>
   </section>
   <?php include '../html/Footer.html' ?>
+  	<?php } ?>
+
 </body>
 </html>

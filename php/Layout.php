@@ -1,3 +1,6 @@
+<?php
+        session_start();  
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +8,7 @@
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
-  <section class="main" id="s1">
+<section class="main" id="s1">
     <div>
 
       <h2>Quiz: el juego de las preguntas</h2><br>
