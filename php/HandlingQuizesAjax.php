@@ -10,6 +10,7 @@
   <script src="../js/ShowQuestionsAjax.js"></script>
   <script src="../js/AddQuestionsAjax.js"></script>
   <script src="../js/CountQuestions.js"></script>
+  <script src="../js/LogOutOnClose.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <style>

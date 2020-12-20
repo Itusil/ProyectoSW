@@ -57,13 +57,15 @@
 				$emailseguro=mysqli_real_escape_string($link, strip_tags($_POST["email"]));
 				$passsegura=mysqli_real_escape_string($link, strip_tags($_POST["pass"]));
 				$passCryp = crypt($passsegura,'$5$rounds=5000$ArenItur$');
-
+				
+				include 'cleanOldUsers.php'; //Borramos los usuarios que llevan inactivos 5 minutos
+				
 				$sql = "SELECT * FROM usuario WHERE usuario.email='" . $emailseguro . "' AND usuario.pass='" . $passCryp. "'";
 				$usuario = mysqli_query($link ,$sql);
 				if(mysqli_num_rows($usuario) == 0){
 					echo '<p style="color:red; font-size:20px; font-weight: bold;">LOGIN INCORRECTO</p>';
 				}else if(estaLogeado($_POST["email"])){
-					echo '<p style="color:red; font-size:20px; font-weight: bold;">Este usuario ya esta logeado en otra pestaña</p>';
+					echo '<p style="color:red; font-size:20px; font-weight: bold;">Este usuario ha iniciado sesión en otra pestaña y ha realizado una acción hace menos de cinco minutos. <br> Cierre la otra pestaña o, si ha cerrado la pestaña sin hacer LogOut, espere 5 minutos.</p>';
 				}else{
 					$row  = mysqli_fetch_array($usuario);
 					if($row['estado'] != "Activo"){

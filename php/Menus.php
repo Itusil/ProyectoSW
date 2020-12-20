@@ -1,6 +1,7 @@
 <div id='page-wrap'>
 
   <?php if(isset($_SESSION["email"])){?>
+	<?php include 'updateLastTime.php'; ?>
 	<header class='main' id='h1'>
 		<?php $email = $_SESSION["email"];?>
 	    <span class="right"><a href="LogOut.php">Logout</a></span>

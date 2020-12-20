@@ -9,7 +9,7 @@ if ($local==1){
 else{
     $server="localhost";
     $user="id14877622_root";
-    $pass="estonoes";
+    $pass="tr|cTsObKoqrB9QG";
     $basededatos="id14877622_quiz";
 }
 ?>

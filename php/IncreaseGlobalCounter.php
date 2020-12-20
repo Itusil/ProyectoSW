@@ -12,6 +12,7 @@
 		//Inserción en xml
 		$xml = simplexml_load_file('../xml/UserCounter.xml');
 		$usuario = $xml->addChild('usuario');
+		$usuario->addAttribute('lastTime',date("Y-m-d H:i:s"));
 		$usuario->addAttribute('email',$email);
 		//Insercion identada:
 		$xmlContent = formatXml($xml);
