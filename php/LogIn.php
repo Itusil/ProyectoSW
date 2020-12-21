@@ -6,18 +6,24 @@
 <head>
 
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <!--<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>-->
-  <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+  <meta name="google-signin-client_id" content="642356419201-6anlle64tonqahimvuvra3qn3mftrj5q.apps.googleusercontent.com">
+
+
   <script src="../js/jquery-3.4.1.min.js"></script>
   <script src="../js/ShowImageInForm.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
     <?php include '../html/Head.html'?>
 </head>
 <style>
-#img_url {
-  background: #ddd;
-  width:100px;
-  height: 90px;
-  display: block;
+.g-signin2{
+  width: 100%;
+}
+
+.g-signin2 > div{
+  margin: 0 auto;
 }
 </style>
 <body>
@@ -36,9 +42,43 @@
 		</form>
 			</td>
 	</fieldset><br>
+	    </div>
 	<text style="color:blue; font-size:20px; text-align:center;font-weight: bold;">No te acuerdas de la contraseña?</text>
 	<text style="color:blue; font-size:20px; text-align:center;">Haz click <a href="RecoverPasswordPetition.php">aquí</a></text>
-	
+	<br><br>
+	<text style="color:blue; font-size:20px; text-align:center;font-weight: bold;">Si lo prefieres puedes hacer Log In social:</text><br><br>
+	<div class="g-signin2" data-onsuccess="onSignIn"></div>
+	<div id="feedbackAjax"></div>
+	<?php include 'cleanOldUsers.php';?>
+	<script> function onSignIn(googleUser) {
+			  var profile = googleUser.getBasicProfile();
+			  var imagen = profile.getImageUrl();
+			  var email = profile.getEmail();
+			  xmlhttp = new XMLHttpRequest();
+			  var params = "imagen=".concat(imagen).concat("&email=").concat(email);
+			  xmlhttp.open("POST","../php/AddSessionVariables.php"); //Save login details for $_SESSION variable
+			  xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			  xmlhttp.send(params);
+			  	Swal.fire({
+						  icon: 'success',
+						  title: 'Bienvenido usuario <br> '.concat(email),
+						  allowOutsideClick: false,
+						  showDenyButton: false,
+						  showCancelButton: false,
+						  confirmButtonText: `De acuerdo`,
+						  denyButtonText: `No`,
+						}).then((result) => {
+				  if (result.isConfirmed) {
+					window.location.href = 'Layout.php';  }
+				});
+				  
+			
+			  
+
+			}
+	</script>
+	  </section>
+
 	<?php include '../php/DbConfig.php' ?>
 		<?php 
 		function estaLogeado($email_){
@@ -50,10 +90,8 @@
 					return true;
 				}}
 			return false;
-			}			
-		
-		
-		//hacer el isset con tipop
+			}	
+				
 		if (isset($_POST['email'])){
 				$bol=0;
 				$link = new mysqli($server, $user, $pass, $basededatos);
@@ -87,11 +125,5 @@
 			}
  ?>
 	
-	
-	
-	
-    </div>
-  </section>
   <?php include '../html/Footer.html' ?>
-	<!--<script src="../js/ValidateFieldsQuestion.js"></script>-->
-</body>
+</body></html>
