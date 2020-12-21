@@ -35,7 +35,10 @@
 			<input type="submit" id="boton" value="Login"><br><br>
 		</form>
 			</td>
-	</fieldset>
+	</fieldset><br>
+	<text style="color:blue; font-size:20px; text-align:center;font-weight: bold;">No te acuerdas de la contraseña?</text>
+	<text style="color:blue; font-size:20px; text-align:center;">Haz click <a href="RecoverPasswordPetition.php">aquí</a></text>
+	
 	<?php include '../php/DbConfig.php' ?>
 		<?php 
 		function estaLogeado($email_){
