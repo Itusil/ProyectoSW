@@ -45,4 +45,17 @@
       <response>Al desarrollo que satisface las necesidades del presente sin comprometer las necesidades del futuro.</response>
     </incorrectResponses>
   </assessmentItem>
+  <assessmentItem subject="PHP" author="miturria003@ikasle.ehu.eus">
+    <itemBody>
+      <p>Como muestras un codigo html desde php?</p>
+    </itemBody>
+    <correctResponse>
+      <response>Usando "echo"</response>
+    </correctResponse>
+    <incorrectResponses>
+      <response>Usando "Include"</response>
+      <response>Usando "incluende_once"</response>
+      <response>No se puede</response>
+    </incorrectResponses>
+  </assessmentItem>
 </assessmentItems>

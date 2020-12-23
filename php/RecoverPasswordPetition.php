@@ -40,7 +40,8 @@
 				}else{
 					$row  = mysqli_fetch_array($usuario);
 					$nombre = $row['nombre'];
-					$emailcry = crypt($emailseguro,'$5$rounds=5000$IturriaS$'); //Encripto el email (será lo que mande al usuario)
+					$num = rand(10000,99999);//Numero aleatorio, de manera que no se pueda saber que numero se ha introducido
+					$emailcry = crypt($emailseguro,'$5$rounds=5000$Itu'.strval($num).'$'); //Encripto el email (será lo que mande al usuario), será una encryptacion aleatoria, imposible acertar 
 					$fecha = date('Y-m-d H:i:s'); //Saco la fecha actual
 
 					$sql = "INSERT INTO recoverpass(fecha, email,emailcry) VALUES ('$fecha', '$emailseguro', '$emailcry')";
