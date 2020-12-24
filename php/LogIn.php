@@ -42,43 +42,7 @@
 		</form>
 			</td>
 	</fieldset><br>
-	    </div>
-	<text style="color:blue; font-size:20px; text-align:center;font-weight: bold;">No te acuerdas de la contraseña?</text>
-	<text style="color:blue; font-size:20px; text-align:center;">Haz click <a href="RecoverPasswordPetition.php">aquí</a></text>
-	<br><br>
-	<text style="color:blue; font-size:20px; text-align:center;font-weight: bold;">Si lo prefieres puedes hacer Log In social:</text><br><br>
-	<div class="g-signin2" data-onsuccess="onSignIn"></div>
-	<div id="feedbackAjax"></div>
-	<?php include 'cleanOldUsers.php';?>
-	<script> function onSignIn(googleUser) {
-			  var profile = googleUser.getBasicProfile();
-			  var imagen = profile.getImageUrl();
-			  var email = profile.getEmail();
-			  xmlhttp = new XMLHttpRequest();
-			  var params = "imagen=".concat(imagen).concat("&email=").concat(email);
-			  xmlhttp.open("POST","../php/AddSessionVariables.php"); //Save login details for $_SESSION variable
-			  xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-			  xmlhttp.send(params);
-			  	Swal.fire({
-						  icon: 'success',
-						  title: 'Bienvenido usuario <br> '.concat(email),
-						  allowOutsideClick: false,
-						  showDenyButton: false,
-						  showCancelButton: false,
-						  confirmButtonText: `De acuerdo`,
-						  denyButtonText: `No`,
-						}).then((result) => {
-				  if (result.isConfirmed) {
-					window.location.href = 'Layout.php';  }
-				});
-				  
-			
-			  
-
-			}
-	</script>
-	  </section>
-
+	
 	<?php include '../php/DbConfig.php' ?>
 		<?php 
 		function estaLogeado($email_){
@@ -124,6 +88,45 @@
 				mysqli_close($link); 
 			}
  ?>
+ <br><br><text style="color:blue; font-size:20px; text-align:center;font-weight: bold;">No te acuerdas de la contraseña?</text>
+	<text style="color:blue; font-size:20px; text-align:center;">Haz click <a href="RecoverPasswordPetition.php">aquí</a></text>
+	<br><br>
+	<text style="color:blue; font-size:20px; text-align:center;font-weight: bold;">Si lo prefieres puedes hacer Log In social:</text><br><br>
+	<div class="g-signin2" data-onsuccess="onSignIn"></div>
+	<div id="feedbackAjax"></div>
+	<?php include 'cleanOldUsers.php';?>
+	<script> function onSignIn(googleUser) {
+			  var profile = googleUser.getBasicProfile();
+			  var imagen = profile.getImageUrl();
+			  var email = profile.getEmail();
+			  xmlhttp = new XMLHttpRequest();
+			  var params = "imagen=".concat(imagen).concat("&email=").concat(email);
+			  xmlhttp.open("POST","../php/AddSessionVariables.php"); //Save login details for $_SESSION variable
+			  xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			  xmlhttp.send(params);
+			  	Swal.fire({
+						  icon: 'success',
+						  title: 'Bienvenido usuario <br> '.concat(email),
+						  allowOutsideClick: false,
+						  showDenyButton: false,
+						  showCancelButton: false,
+						  confirmButtonText: `De acuerdo`,
+						  denyButtonText: `No`,
+						}).then((result) => {
+				  if (result.isConfirmed) {
+					window.location.href = 'Layout.php';  }
+				});
+				  
+			
+			  
+
+			}
+	</script>
+
+ 	    </div>
+
+ 	  </section>
+
 	
   <?php include '../html/Footer.html' ?>
 </body></html>
